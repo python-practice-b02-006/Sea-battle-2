@@ -4,7 +4,7 @@ class Renderer():
     def __init__(self):
         pass
     
-    def draw_game_field(self, screen, game_field):
+    def draw_game_field(self, screen, squares_of_game_field):
         '''
         Draws game field with objects on it.
 
@@ -19,6 +19,7 @@ class Renderer():
         None.
 
         '''
+        screen.fill(BLACK)
         pass
     
     def draw_starting_button(self, screen):
