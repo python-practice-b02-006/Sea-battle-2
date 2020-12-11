@@ -78,4 +78,6 @@ class GameField():
                             self.cells[ships[i][j].x_coord - k][
                                 ships[i][j].y_coord - 1 + l
                                 ] = ships[i][j].structure[k][l]
-                    
+
+if __name__ == "__main__":
+    print("This module is not for direct call!")
