@@ -1,10 +1,10 @@
-from globaldata import * 
+from gamefield import Cell
 
 class BattleShip():
     '''
     Contains attributes and methods of the battleship.
     '''
-    def __init__(self, colour, x, y, orientation, toughness, movement_points):
+    def __init__(self, color, x, y, orientation, toughness, movement_points):
         '''
         Creates an object of battleship.
 
@@ -34,15 +34,23 @@ class BattleShip():
         self.x_coord = x
         self.y_coord = y
         self.orientation = orientation
-        self.colour = colour
+        self.color = color
         self.toughness = toughness
         self.movement_points = movement_points
-        self.structure = [[[None, colour],     [None, colour], [None, colour]],     #Front side.
-                          [["cannon", colour], [None, colour], ["cannon", colour]],
-                          [[None, colour],     [None, colour], [None, colour]],
-                          [[None, colour],     [None, colour], [None, colour]],
-                          [["cannon", colour], [None, colour], ["cannon", colour]],
-                          [[None, colour],     [None, colour], [None, colour]]]     #Back side.
+        dictionary_of_orientations = {"left" : 0, "up" : 1, "right" : 2, 
+                                      "down" : 3}
+        list_of_orientations = ["left", "up", "right", "down"]
+        empty_cell = Cell("empty", color)
+        left_cannon = Cell("cannon", color, list_of_orientations[
+            (dictionary_of_orientations[orientation] - 1) % 4])
+        right_cannon = Cell("cannon", color, list_of_orientations[
+            (dictionary_of_orientations[orientation] + 1) % 4])
+        self.structure = [[empty_cell,  empty_cell, empty_cell],     #Front side.
+                          [left_cannon, empty_cell, right_cannon],
+                          [empty_cell,  empty_cell, empty_cell],
+                          [empty_cell,  empty_cell, empty_cell],
+                          [left_cannon, empty_cell, right_cannon],
+                          [empty_cell,  empty_cell, empty_cell]]     #Back side.
 
 if __name__ == "__main__":
     print("This module is not for direct call!")    
