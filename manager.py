@@ -43,11 +43,19 @@ class Manager():
             number_of_active_player += 1
             number_of_active_player %= 2
             players[number_of_active_player].update_ships_movement_points()
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    finished = True 
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if (event.button == 1): pass
+            turn_passed = False
+            while not turn_passed:
+                clock.tick(FPS)
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        turn_passed = True
+                        finished = True
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_KP_ENTER:
+                            turn_passed = True
+                            print("next_turn")
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+                        if (event.button == 1): pass
                         
         
         out = open('observe.txt', 'a')
