@@ -4,6 +4,7 @@ class BattleShip():
     '''
     Contains attributes and methods of the battleship.
     '''
+    max_movement_points = 8
     def __init__(self, color, x, y, orientation, toughness, movement_points):
         '''
         Creates an object of battleship.
@@ -51,6 +52,17 @@ class BattleShip():
                           [empty_cell,  empty_cell, empty_cell],
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell]]     #Back side.
+
+    def update_movement_points(self):
+        '''
+        updates movement points of the ship.
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.movement_points = self.max_movement_points
 
 if __name__ == "__main__":
     print("This module is not for direct call!")    
