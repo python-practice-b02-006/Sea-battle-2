@@ -5,7 +5,8 @@ class BattleShip():
     Contains attributes and methods of the battleship.
     '''
     max_movement_points = 8
-    def __init__(self, color, x, y, orientation, toughness, movement_points):
+    def __init__(self, color, x, y, orientation, toughness=12, 
+                 movement_points=8):
         '''
         Creates an object of battleship.
 

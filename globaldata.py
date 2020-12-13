@@ -32,20 +32,14 @@ game_field_hight = 30 #The hight of game field (along y axis)
 
 from battleship import BattleShip
 
-battleship1 = BattleShip(color = c.GREEN, x = 5, y = 20, orientation = "up", 
-                         toughness = 12, movement_points = 8)
-battleship2 = BattleShip(color = c.GREEN, x = 15, y = 20, orientation = "up", 
-                         toughness = 12, movement_points = 8)
-battleship3 = BattleShip(color = c.GREEN, x = 25, y = 20, orientation = "up", 
-                         toughness = 12, movement_points = 8)
+battleship1 = BattleShip(color = c.GREEN, x = 5, y = 20, orientation = "up")
+battleship2 = BattleShip(color = c.GREEN, x = 15, y = 20, orientation = "up")
+battleship3 = BattleShip(color = c.GREEN, x = 25, y = 20, orientation = "up")
 starting_set_of_ships_for_player0 = [battleship1, battleship2, battleship3]
 
-battleship4 = BattleShip(color = c.RED, x = 5, y = 10, orientation = "down", 
-                         toughness = 12, movement_points = 8)
-battleship5 = BattleShip(color = c.RED, x = 15, y = 10, orientation = "down", 
-                         toughness = 12, movement_points = 8)
-battleship6 = BattleShip(color = c.RED, x = 25, y = 10, orientation = "down", 
-                         toughness = 12, movement_points = 8)
+battleship4 = BattleShip(color = c.RED, x = 5, y = 10, orientation = "down")
+battleship5 = BattleShip(color = c.RED, x = 15, y = 10, orientation = "down")
+battleship6 = BattleShip(color = c.RED, x = 25, y = 10, orientation = "down")
 starting_set_of_ships_for_player1 = [battleship4, battleship5, battleship6]
 
 
