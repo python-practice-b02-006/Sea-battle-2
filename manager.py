@@ -107,13 +107,13 @@ class Manager():
                     player.make_ships_not_chosen()
                     print("Next turn")
                 elif event.key == pygame.K_UP:
-                    player.move_chosen_ship("up")
+                    player.move_chosen_ship("up", game_field)
                 elif event.key == pygame.K_DOWN:
-                    player.move_chosen_ship("down")
+                    player.move_chosen_ship("down", game_field)
                 elif event.key == pygame.K_LEFT:
-                    player.move_chosen_ship("left")
+                    player.move_chosen_ship("left", game_field)
                 elif event.key == pygame.K_RIGHT:
-                    player.move_chosen_ship("right")
+                    player.move_chosen_ship("right", game_field)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button < 4):
                     pass

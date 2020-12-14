@@ -43,7 +43,7 @@ class Player():
         for i in range(len(self.ships)):
             self.ships[i].make_not_chosen()
             
-    def move_chosen_ship(self, direction):
+    def move_chosen_ship(self, direction, game_field):
         '''
         Moves chosen ship in the needed direction if possible. If not, stops 
         the process.
@@ -60,7 +60,10 @@ class Player():
         '''
         for i in range(len(self.ships)):
             if self.ships[i].is_chosen:
-                self.ships[i].move_if_possible(direction)
+                if self.ships[i].is_possible_to_move(direction, game_field):
+                    self.ships[i].move(direction)
+                else:
+                    print("Impossible to move!")
                 
         
 if __name__ == "__main__":
