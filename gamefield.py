@@ -16,7 +16,7 @@ c = Colors()
 
 class GameField():
     '''
-    Stores all data about cells of gamefield.
+    Stores all data about cells of game field.
     '''
     def __init__(self, game_field_width, game_field_hight):
         '''

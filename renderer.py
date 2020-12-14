@@ -74,6 +74,23 @@ class Renderer():
         pass
     
     def finish_the_game(self, screen, color, color_name):
+        '''
+        Displays caption:"/color_name/ игрок побеждает!"
+
+        Parameters
+        ----------
+        screen : TYPE Pygame screen.
+            DESCRIPTION. Where everything is drawn.
+        color : TYPE tuple of int-s
+            DESCRIPTION. The color of text.
+        color_name : TYPE string
+            DESCRIPTION. This should be written in the caption.
+
+        Returns
+        -------
+        None.
+
+        '''
         screen.fill(c.BLACK)
         pass
     

@@ -58,11 +58,12 @@ class Manager():
             number_of_active_player += 1
             number_of_active_player %= 2
             player[number_of_active_player].update_ships_movement_points()
+            player[number_of_active_player].activate_cells_of_ships()
             turn_passed = False
             while not turn_passed:
                 clock.tick(FPS)
-                turn_passed, finished, exited = self.handle_events(
-                    pygame.event.get())
+                turn_passed, finished, exited = self.handle_events(game_field,
+                    player[number_of_active_player], pygame.event.get())
             if finished:
                 for i in range(len(player)):
                     if len(player[i].ships) > 0:
@@ -74,15 +75,18 @@ class Manager():
                         if event.type == pygame.QUIT:
                             exited = True
                 
-    def handle_events(self, events):
+    def handle_events(self, game_field, player, events):
         '''
         Handles events
 
         Parameters
         ----------
+        game_field : TYPE object of GameField
+            DESCRIPTION. Contains all data about cells of game field.
+        player : TYPE object of Player
+            DESCRIPTION. Contains info about ships of the player.
         events : TYPE pygame event
             DESCRIPTION. Events got from pygame.event.get()
-
         Returns
         -------
         bool
@@ -100,7 +104,7 @@ class Manager():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP_ENTER:
                     turn_passed = True
-                    print("next_turn")
+                    print("Next turn")
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button == 1): pass
         return turn_passed, finished, exited

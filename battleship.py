@@ -64,6 +64,20 @@ class BattleShip():
 
         '''
         self.movement_points = self.max_movement_points
+        
+    def activate_cannons(self):
+        '''
+        Makes cannons of the ship active.
 
+        Returns
+        -------
+        None.
+
+        '''
+        self.structure[1][0].is_active = True
+        self.structure[1][2].is_active = True
+        self.structure[4][0].is_active = True
+        self.structure[4][2].is_active = True
+        
 if __name__ == "__main__":
     print("This module is not for direct call!")    

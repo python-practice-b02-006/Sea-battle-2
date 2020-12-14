@@ -18,6 +18,18 @@ class Player():
         '''
         for i in range(len(self.ships)):
             self.ships[i].update_movement_points()
-        
+            
+    def activate_cells_of_ships(self):
+        '''
+        Makes cannons of all ships active.
+
+        Returns
+        -------
+        None.
+
+        '''
+        for i in range(len(self.ships)):
+            self.ships[i].activate_cannons()
+            
 if __name__ == "__main__":
     print("This module is not for direct call!")

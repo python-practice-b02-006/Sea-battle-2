@@ -33,7 +33,7 @@ game_field_hight = 30 #The hight of game field (along y axis)
 from battleship import BattleShip
 
 color_of_player = [c.GREEN, c.RED]
-color_name_of_player = ["Green", "Red"]
+color_name_of_player = ["Зелёный", "Красный"]
 battleship1 = BattleShip(color_of_player[0], x = 5, y = 20,
                          orientation = "up")
 battleship2 = BattleShip(color_of_player[0], x = 15, y = 20, 
