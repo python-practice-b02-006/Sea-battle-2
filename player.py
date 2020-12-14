@@ -2,7 +2,9 @@ class Player():
     '''
     Stores a list of player's ships. Updates this list.
     '''
-    def __init__(self, ships):
+    def __init__(self, color, color_name, ships):
+        self.color = color
+        self.color_name = color_name
         self.ships = ships
         
     def update_ships_movement_points(self):

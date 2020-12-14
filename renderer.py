@@ -73,6 +73,10 @@ class Renderer():
         screen.fill(c.BLACK)
         pass
     
+    def finish_the_game(self, screen, color, color_name):
+        screen.fill(c.BLACK)
+        pass
+    
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
