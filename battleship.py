@@ -93,32 +93,22 @@ class BattleShip():
         '''
         self.is_chosen = False
         
-    """def is_clicked(self, x_mouse_coord, y_mouse_coord):
+    def move_if_possible(self, direction):
         '''
-        Checks if the ship is clicked or not.
+        Moves the ship in the needed direction if possible. If not, stops 
+        the process.
 
         Parameters
         ----------
-        x_mouse_coord : TYPE int
-            DESCRIPTION. x coordinate of mouse cursor.
-        y_mouse_coord : TYPE int
-            DESCRIPTION. y coordinate of mouse cursor.
+        direction : TYPE string
+            DESCRIPTION. Where the ship should go.
 
         Returns
         -------
-        bool
-            DESCRIPTION. Returns True if the ship is clicked, else 
-            returns False.
+        None.
 
         '''
-        k = pixels_per_cell
-        if ((x_mouse_coord >= self.rect[0]) and 
-            (x_mouse_coord <= self.rect[0] + self.rect[2]) and 
-            (y_mouse_coord >= self.rect[1]) and 
-            (y_mouse_coord <= self.rect[1] + self.rect[3])):
-            return True
-        else:
-            return False"""
+        pass
         
 if __name__ == "__main__":
     print("This module is not for direct call!")    

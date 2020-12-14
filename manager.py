@@ -106,19 +106,17 @@ class Manager():
                     turn_passed = True
                     player.make_ships_not_chosen()
                     print("Next turn")
+                elif event.key == pygame.K_UP:
+                    player.move_chosen_ship("up")
+                elif event.key == pygame.K_DOWN:
+                    player.move_chosen_ship("down")
+                elif event.key == pygame.K_LEFT:
+                    player.move_chosen_ship("left")
+                elif event.key == pygame.K_RIGHT:
+                    player.move_chosen_ship("right")
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button < 4):
-                    '''any_ship_is_clicked = False
-                    for i in range(len(player.ships)):
-                        if player.ships[i].is_clicked(event.pos[0],
-                                                      event.pos[1]):
-                            any_ship_is_clicked = True
-                            player.ships[i].is_chosen = True
-                            for j in range(len(player.ships[i].structure)):
-                                for k in range(len(player.ships[i].structure[j])):
-                                    if player.ships[i].sructure[j][k].is_clicked(
-                                            event.pos[0], event.pos[1]):
-                                        player.ships[i].sructure[j][k].is_chosen = True'''
+                    pass
         return turn_passed, finished, exited
                         
         

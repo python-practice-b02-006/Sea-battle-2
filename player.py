@@ -41,7 +41,27 @@ class Player():
 
         '''
         for i in range(len(self.ships)):
-            self.ships[i].make_not_chosen() 
+            self.ships[i].make_not_chosen()
+            
+    def move_chosen_ship(self, direction):
+        '''
+        Moves chosen ship in the needed direction if possible. If not, stops 
+        the process.
+
+        Parameters
+        ----------
+        direction : TYPE string
+            DESCRIPTION. Where chosen ship should go.
+
+        Returns
+        -------
+        None.
+
+        '''
+        for i in range(len(self.ships)):
+            if self.ships[i].is_chosen:
+                self.ships[i].move_if_possible(direction)
+                
         
 if __name__ == "__main__":
     print("This module is not for direct call!")
