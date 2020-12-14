@@ -31,5 +31,17 @@ class Player():
         for i in range(len(self.ships)):
             self.ships[i].activate_cannons()
             
+    def make_ships_not_chosen(self):
+        '''
+        Makes ships of the player not highlighted.
+
+        Returns
+        -------
+        None.
+
+        '''
+        for i in range(len(self.ships)):
+            self.ships[i].make_not_chosen() 
+        
 if __name__ == "__main__":
     print("This module is not for direct call!")

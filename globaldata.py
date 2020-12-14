@@ -27,6 +27,9 @@ game_field_width = 30 #The width of game field (along x axis)
                         #(an amount of cells)
 game_field_hight = 30 #The hight of game field (along y axis) 
                         #(an amount of cells)
+pixels_per_cell = min(screen_width // game_field_width, screen_hight //
+                game_field_hight) # An amount of pixels in the side of one 
+                                                              #cell.(int type)
 
 '''-------------------------Starting-set-----------------------------------'''
 

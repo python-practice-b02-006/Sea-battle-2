@@ -1,5 +1,4 @@
-from globaldata import (Colors, screen_width, screen_hight, game_field_width,
-                        game_field_hight)  
+from globaldata import (Colors, pixels_per_cell)  
 c = Colors()
 
 class Renderer():
@@ -25,14 +24,11 @@ class Renderer():
 
         '''
         screen.fill(c.BLACK)
-        k = min(screen_width // game_field_width, screen_hight //
-                game_field_hight) # An amount of pixels in the side of the 
-                                                              #cell.(int type)
         for i in range(len(cells_of_game_field)):
             for j in range(len(cells_of_game_field[i])):
-                self.draw_cell(screen, cells_of_game_field[i][j], i, j, k)
+                self.draw_cell(screen, cells_of_game_field[i][j], i, j)
     
-    def draw_cell(self, screen, cell, m, n, k):
+    def draw_cell(self, screen, cell, m, n):
         '''
         Draws a certain cell.
 
@@ -46,8 +42,6 @@ class Renderer():
             DESCRIPTION. x coordinate of the cell on the gamefield
         n : TYPE int 
             DESCRIPTION. y coordinate of the cell on the gamefield
-        k : TYPE int 
-            DESCRIPTION. An amount of pixels in the side of the cell.
         Returns
         -------
         None.

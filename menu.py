@@ -55,7 +55,7 @@ class Menu():
                 if event.type == pygame.QUIT:
                     started = True 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if ((event.button == 1) and 
+                    if ((event.button < 4) and 
                         (self.starting_button.is_clicked(event.pos[0], 
                                                          event.pos[1]))):
                         started = True

@@ -1,4 +1,5 @@
 from gamefield import Cell
+from globaldata import pixels_per_cell
 
 class BattleShip():
     '''
@@ -6,7 +7,7 @@ class BattleShip():
     '''
     max_movement_points = 8
     def __init__(self, color, x, y, orientation, toughness=12, 
-                 movement_points=8):
+                 movement_points=8, is_chosen=False):
         '''
         Creates an object of battleship.
 
@@ -39,6 +40,7 @@ class BattleShip():
         self.color = color
         self.toughness = toughness
         self.movement_points = movement_points
+        self.is_chosen = is_chosen
         dictionary_of_orientations = {"left" : 0, "up" : 1, "right" : 2, 
                                       "down" : 3}
         list_of_orientations = ["left", "up", "right", "down"]
@@ -53,6 +55,7 @@ class BattleShip():
                           [empty_cell,  empty_cell, empty_cell],
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell]]     #Back side.
+        
 
     def update_movement_points(self):
         '''
@@ -78,6 +81,44 @@ class BattleShip():
         self.structure[1][2].is_active = True
         self.structure[4][0].is_active = True
         self.structure[4][2].is_active = True
+        
+    def make_not_chosen(self):
+        '''
+        Makes the ship not chosen.
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.is_chosen = False
+        
+    """def is_clicked(self, x_mouse_coord, y_mouse_coord):
+        '''
+        Checks if the ship is clicked or not.
+
+        Parameters
+        ----------
+        x_mouse_coord : TYPE int
+            DESCRIPTION. x coordinate of mouse cursor.
+        y_mouse_coord : TYPE int
+            DESCRIPTION. y coordinate of mouse cursor.
+
+        Returns
+        -------
+        bool
+            DESCRIPTION. Returns True if the ship is clicked, else 
+            returns False.
+
+        '''
+        k = pixels_per_cell
+        if ((x_mouse_coord >= self.rect[0]) and 
+            (x_mouse_coord <= self.rect[0] + self.rect[2]) and 
+            (y_mouse_coord >= self.rect[1]) and 
+            (y_mouse_coord <= self.rect[1] + self.rect[3])):
+            return True
+        else:
+            return False"""
         
 if __name__ == "__main__":
     print("This module is not for direct call!")    

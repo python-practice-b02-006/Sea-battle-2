@@ -3,12 +3,13 @@ class Cell():
     Stores data about certain cell.
     '''
     def __init__(self, type_, color, orientation = None, is_active=True, 
-                 is_destroyed=False):
+                 is_destroyed=False, is_chosen=False):
         self.type = type_
         self.color = color
         self.orientation = orientation
         self.is_active = is_active
         self.is_destroyed = is_destroyed
+        self.is_chosen = is_chosen
 
 
 from globaldata import Colors
