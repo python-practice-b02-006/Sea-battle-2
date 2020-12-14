@@ -60,10 +60,12 @@ class Player():
         '''
         for i in range(len(self.ships)):
             if self.ships[i].is_chosen:
-                if self.ships[i].is_possible_to_move(direction, game_field):
+                if self.ships[i].is_possible_to_move(direction,
+                                                     game_field)[0]:
                     self.ships[i].move(direction)
                 else:
-                    print("Impossible to move!")
+                    print(self.ships[i].is_possible_to_move(direction,
+                                                            game_field)[1])
                 
         
 if __name__ == "__main__":

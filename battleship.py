@@ -124,14 +124,18 @@ class BattleShip():
         -------
         bool
             DESCRIPTION. True if the movement is possible, else False.
-
+        string
+            DESCRIPTION. The message with the reason of inability to move.
         '''
         if (self.is_enough_movement_points(direction) and 
             not self.will_be_out_of_game_field(direction, game_field) and
             not self.will_collide(direction, game_field)):
-            return True
+            return [True, ""]
         else:
-            return False
+            if not self.is_enough_movement_points(direction):
+                return [False, "Не достаточно очков передвижения!"]
+            else:
+                return [False, "Движение в этом направлении невозможно!"]
         
     def is_enough_movement_points(self, direction):
         '''
