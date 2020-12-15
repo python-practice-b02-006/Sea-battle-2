@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((screen_width, screen_hight))
 
 
 def main():
-    mgr = Manager()
+    mgr = Manager(screen)
     mgr.process(screen)
     pygame.quit()
     print("OK")

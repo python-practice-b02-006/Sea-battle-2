@@ -10,8 +10,8 @@ class Menu():
     '''
     Loads menu and contains other methods.
     '''
-    def __init__(self):
-        self.renderer = Renderer()
+    def __init__(self, screen):
+        self.renderer = Renderer(screen)
         self.starting_button = Button("Начать", rect_of_starting_button)
     
     def let_start(self, screen):

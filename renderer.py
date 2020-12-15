@@ -1,3 +1,4 @@
+import pygame
 from pygame.draw import *
 from globaldata import (Colors, pixels_per_cell)  
 c = Colors()
@@ -6,8 +7,12 @@ class Renderer():
     '''
     Visualizes everything.
     '''
-    def __init__(self):
-        pass
+    def __init__(self, screen):
+        pygame.init()
+        screen.fill(c.BLACK)
+        background_image = pygame.image.load("fon.jpg")
+        screen.blit(background_image, [0, 0])
+        pygame.display.update()
     
     def draw_game_field(self, screen, cells_of_game_field, ships):
         '''

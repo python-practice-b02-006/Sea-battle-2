@@ -14,8 +14,8 @@ class Manager():
     '''
     Manages game processes.
     '''
-    def __init__(self):
-        self.renderer = Renderer()
+    def __init__(self, screen):
+        self.renderer = Renderer(screen)
     
     def process(self, screen):
         '''
@@ -31,7 +31,7 @@ class Manager():
         None.
 
         '''
-        menu = Menu()
+        menu = Menu(screen)
         menu.load(screen)
         player = [Player(color_of_player[0], color_name_of_player[0], 
                          starting_set_of_ships_for_player0),
