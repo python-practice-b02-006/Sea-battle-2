@@ -45,17 +45,6 @@ class Manager():
         finished = False
         number_of_active_player = 1
         while not exited:
-            #
-            out = open('observe.txt', 'a')
-            out = open('observe.txt', 'w')
-            for i in range(30):
-                for j in range(30):
-                    print(game_field.cells[i][j].type,
-                          game_field.cells[i][j].color,
-                          game_field.cells[i][j].orientation, end='|',
-                          file = out)
-                print(end='\n', file = out)
-            #
             number_of_active_player += 1
             number_of_active_player %= 2
             player[number_of_active_player].update_ships_movement_points()
@@ -65,6 +54,19 @@ class Manager():
                 clock.tick(FPS)
                 turn_passed, finished, exited = self.handle_events(game_field,
                     player[number_of_active_player], pygame.event.get())
+                game_field.update([player[0].ships, player[1].ships])
+                self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
+                #
+                out = open('observe.txt', 'a')
+                out = open('observe.txt', 'w')
+                for i in range(30):
+                    for j in range(30):
+                        print(game_field.cells[j][i].type,
+                              game_field.cells[j][i].orientation, end='|',
+                              file = out)
+                    print(end='\n', file = out)
+                #
             if finished:
                 for i in range(len(player)):
                     if len(player[i].ships) > 0:

@@ -40,6 +40,10 @@ class GameField():
         self.cells = []
         self.width = game_field_width
         self.hight = game_field_hight
+        for i in range(self.width):
+            self.cells.append([])
+            for j in range(self.hight):
+                self.cells[i].append(Cell("Water", c.BLUE))
     
     def update(self, ships):
         '''
@@ -56,9 +60,8 @@ class GameField():
 
         '''
         for i in range(self.width):
-            self.cells.append([])
             for j in range(self.hight):
-                self.cells[i].append(Cell("Water", c.BLUE))        
+                self.cells[i][j] = Cell("Water", c.BLUE)        
         for i in range(len(ships)):
             for j in range(len(ships[i])):
                 for k in range(len(ships[i][j].structure)):

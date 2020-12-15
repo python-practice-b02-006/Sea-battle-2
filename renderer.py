@@ -52,8 +52,7 @@ class Renderer():
         None.
 
         '''
-        pass # Use method ship.rect() - data about needed rectangle.(will be
-                                                             #added in future)
+        pass # Use method ship.rect() - data about needed rectangle.
         
     def draw_cell(self, screen, cell, m, n):
         '''
