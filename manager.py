@@ -39,7 +39,8 @@ class Manager():
                          starting_set_of_ships_for_player1)]
         game_field = GameField(game_field_width, game_field_hight)
         game_field.update([player[0].ships, player[1].ships])
-        self.renderer.draw_game_field(screen, game_field.cells)
+        self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
         exited = False
         finished = False
         number_of_active_player = 1

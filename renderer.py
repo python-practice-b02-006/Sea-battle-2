@@ -1,3 +1,4 @@
+from pygame.draw import *
 from globaldata import (Colors, pixels_per_cell)  
 c = Colors()
 
@@ -8,7 +9,7 @@ class Renderer():
     def __init__(self):
         pass
     
-    def draw_game_field(self, screen, cells_of_game_field):
+    def draw_game_field(self, screen, cells_of_game_field, ships):
         '''
         Draws game field with objects on it.
 
@@ -18,6 +19,9 @@ class Renderer():
             DESCRIPTION. Where everything is drawn.
         game_field : TYPE list of lists
             DESCRIPTION. 2-dimensional list with data about squares.
+        ships : TYPE list of lists of objects
+            DESCRIPTION. The list of lists of ships of players.
+
         Returns
         -------
         None.
@@ -27,7 +31,30 @@ class Renderer():
         for i in range(len(cells_of_game_field)):
             for j in range(len(cells_of_game_field[i])):
                 self.draw_cell(screen, cells_of_game_field[i][j], i, j)
-    
+        for i in range(len(ships)):
+            for j in range(len(ships[i])):
+                if ships[i][j].is_chosen:
+                    self.highlight_chosen_ship(screen, ships[i][j])
+                    
+    def highlight_chosen_ship(self, screen, ship):
+        '''
+        Draws a rectangle around the ship.
+
+        Parameters
+        ----------
+        ship : TYPE object
+            DESCRIPTION. object of BattleShip
+        screen : TYPE Pygame screen.
+            DESCRIPTION. Where everything is drawn.
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass # Use method ship.rect() - data about needed rectangle.(will be
+                                                             #added in future)
+        
     def draw_cell(self, screen, cell, m, n):
         '''
         Draws a certain cell.
