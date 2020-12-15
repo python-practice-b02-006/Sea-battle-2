@@ -1,5 +1,7 @@
+if __name__ == "__main__":
+    print("This module is not for direct call!")
 '''---------------------------Global---------------------------------------'''
-FPS = 3
+FPS = 10
 
 screen_width = 1000
 screen_hight = 800
@@ -55,5 +57,3 @@ starting_set_of_ships_for_player1 = [battleship4, battleship5, battleship6]
 
 '''------------------------------------------------------------------------'''
 
-if __name__ == "__main__":
-    print("This module is not for direct call!")

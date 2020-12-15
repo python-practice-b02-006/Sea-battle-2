@@ -140,6 +140,15 @@ class BattleShip():
                   ])#Dictionary of coordinates changes. [delta x, delta y]
         self.x_coord += d[direction][self.orientation][0]
         self.y_coord += d[direction][self.orientation][1]
+        #Change orientation of cannons.
+        self.structure[1][0].orientation = self.list_of_orientations[
+            (self.dictionary_of_orientations[self.orientation] - 1) % 4]
+        self.structure[1][2].orientation = self.list_of_orientations[
+            (self.dictionary_of_orientations[self.orientation] + 1) % 4]
+        self.structure[4][0].orientation = self.list_of_orientations[
+            (self.dictionary_of_orientations[self.orientation] - 1) % 4]
+        self.structure[4][2].orientation = self.list_of_orientations[
+            (self.dictionary_of_orientations[self.orientation] + 1) % 4]
         
     def is_possible_to_move(self, direction, game_field):
         '''
