@@ -6,6 +6,9 @@ class BattleShip():
     Contains attributes and methods of the battleship.
     '''
     max_movement_points = 8
+    dictionary_of_orientations = {"left" : 0, "up" : 1, "right" : 2, 
+                                      "down" : 3}
+    list_of_orientations = ["left", "up", "right", "down"]
     def __init__(self, color, x, y, orientation, toughness=12, 
                  movement_points=8, is_chosen=False):
         '''
@@ -41,14 +44,11 @@ class BattleShip():
         self.toughness = toughness
         self.movement_points = movement_points
         self.is_chosen = is_chosen
-        dictionary_of_orientations = {"left" : 0, "up" : 1, "right" : 2, 
-                                      "down" : 3}
-        list_of_orientations = ["left", "up", "right", "down"]
         empty_cell = Cell("empty", color)
-        left_cannon = Cell("cannon", color, list_of_orientations[
-            (dictionary_of_orientations[orientation] - 1) % 4])
-        right_cannon = Cell("cannon", color, list_of_orientations[
-            (dictionary_of_orientations[orientation] + 1) % 4])
+        left_cannon = Cell("cannon", color, self.list_of_orientations[
+            (self.dictionary_of_orientations[orientation] - 1) % 4])
+        right_cannon = Cell("cannon", color, self.list_of_orientations[
+            (self.dictionary_of_orientations[orientation] + 1) % 4])
         self.structure = [[empty_cell,  empty_cell, empty_cell],  #Front side.
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell],
@@ -107,11 +107,24 @@ class BattleShip():
         None.
 
         '''
+        #Decrease movement points.
         if direction == self.orientation:
             self.movement_points -= 1
         else:
             self.movement_points -= 2
-    
+        #Change orientation.
+        if (self.dictionary_of_orientations[direction] - 
+            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
+            self.orientation = direction
+        #Change coordinates.
+        d = dict([("up", dict([("up", [0, -1]), ("down", [0, -1]), ("left", [2, -2]), ("right", [-2, -2])])),
+                  ("down", dict([("up", [0, 1]), ("down", [0, 1]), ("left", [2, 2]), ("right", [-2, 2])])),
+                  ("left", dict([("up", [-2, 2]), ("down", [-2, -2]), ("left", [-1, 0]), ("right", [-1, 0])])),
+                  ("right", dict([("up", [2, 2]), ("down", [2, -2]), ("left", [1, 0]), ("right", [1, 0])]))
+                  ])#Dictionary of coordinates changes. [delta x, delta y]
+        self.x_coord += d[direction][self.orientation][0]
+        self.y_coord += d[direction][self.orientation][1]
+        
     def is_possible_to_move(self, direction, game_field):
         '''
         Checks if the movement is possible.

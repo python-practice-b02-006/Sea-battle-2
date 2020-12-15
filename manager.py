@@ -42,7 +42,7 @@ class Manager():
         self.renderer.draw_game_field(screen, game_field.cells)
         exited = False
         finished = False
-        number_of_active_player = 0
+        number_of_active_player = 1
         while not exited:
             #
             out = open('observe.txt', 'a')
