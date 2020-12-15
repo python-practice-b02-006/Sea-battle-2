@@ -55,7 +55,23 @@ class BattleShip():
                           [empty_cell,  empty_cell, empty_cell],
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell]]   #Back side.
-        
+    
+    def rect(self):
+        '''
+        Returns data about rectangle of the ship.
+
+        Returns
+        -------
+        list of int-s
+            DESCRIPTION. Pygame rectangle data in game field coordinates.
+
+        '''
+        d = dict([("up", [self.x_coord - 1, self.y_coord, 3, 6]),
+                  ("down", [self.x_coord - 1, self.y_coord - 5, 3, 6]),
+                  ("left", [self.x_coord, self.y_coord - 1, 6, 3]),
+                  ("right", [self.x_coord - 5, self.y_coord - 1, 6, 3])
+                  ]) # Dictionary of sth that will be returned.
+        return d[self.orientation]
 
     def update_movement_points(self):
         '''
