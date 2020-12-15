@@ -59,7 +59,7 @@ class BattleShip():
 
     def update_movement_points(self):
         '''
-        updates movement points of the ship.
+        Updates movement points of the ship.
 
         Returns
         -------
@@ -107,7 +107,10 @@ class BattleShip():
         None.
 
         '''
-        pass
+        if direction == self.orientation:
+            self.movement_points -= 1
+        else:
+            self.movement_points -= 2
     
     def is_possible_to_move(self, direction, game_field):
         '''
@@ -153,7 +156,16 @@ class BattleShip():
             else False.
 
         '''
-        pass
+        if direction == self.orientation:
+            if self.movement_points == 0:
+                return False
+            else:
+                return True
+        else:
+            if self.movement_points < 2:
+                return False
+            else:
+                return True
     
     def will_be_out_of_game_field(self, direction, game_field):
         '''
