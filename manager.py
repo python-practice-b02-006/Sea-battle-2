@@ -107,7 +107,7 @@ class Manager():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP_ENTER:
                     turn_passed = True
-                    player.make_ships_not_chosen()
+                    #player.make_ships_not_chosen()
                     print("Следующий ход")
                 elif event.key == pygame.K_UP:
                     player.move_chosen_ship("up", game_field)

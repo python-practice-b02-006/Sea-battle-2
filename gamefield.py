@@ -3,13 +3,40 @@ class Cell():
     Stores data about certain cell.
     '''
     def __init__(self, type_, color, orientation = None, is_active=True, 
-                 is_destroyed=False, is_chosen=False):
+                 is_destroyed=False, is_chosen=False, number = 0):
+        '''
+        Initializes the cell.
+
+        Parameters
+        ----------
+        type_ : TYPE string
+            DESCRIPTION. The type of the cell.
+        color : TYPE tuple of int-s
+            DESCRIPTION. The color of the cell.
+        orientation : TYPE string, optional
+            DESCRIPTION. The default is None. Where the cell "looks" to.
+        is_active : TYPE bool, optional
+            DESCRIPTION. The default is True. True if the cell 
+        is_destroyed : TYPE, optional
+            DESCRIPTION. The default is False.
+        is_chosen : TYPE, optional
+            DESCRIPTION. The default is False.
+        number : TYPE, optional
+            DESCRIPTION. The default is 0. The number of ship-owner of the 
+            cell.
+
+        Returns
+        -------
+        None.
+
+        '''
         self.type = type_
         self.color = color
         self.orientation = orientation
         self.is_active = is_active
         self.is_destroyed = is_destroyed
         self.is_chosen = is_chosen
+        self.owner = number
 
 
 from globaldata import Colors
@@ -43,7 +70,7 @@ class GameField():
         for i in range(self.width):
             self.cells.append([])
             for j in range(self.hight):
-                self.cells[i].append(Cell("Water", c.BLUE))
+                self.cells[i].append(Cell("water", c.BLUE))
     
     def update(self, ships):
         '''
@@ -61,7 +88,7 @@ class GameField():
         '''
         for i in range(self.width):
             for j in range(self.hight):
-                self.cells[i][j] = Cell("Water", c.BLUE)        
+                self.cells[i][j] = Cell("water", c.BLUE)        
         for i in range(len(ships)):
             for j in range(len(ships[i])):
                 for k in range(len(ships[i][j].structure)):

@@ -9,7 +9,7 @@ class BattleShip():
     dictionary_of_orientations = {"left" : 0, "up" : 1, "right" : 2, 
                                       "down" : 3}
     list_of_orientations = ["left", "up", "right", "down"]
-    def __init__(self, color, x, y, orientation, toughness=12, 
+    def __init__(self, color, x, y, orientation, number, toughness=12, 
                  movement_points=8, is_chosen=False):
         '''
         Creates an object of battleship.
@@ -31,6 +31,11 @@ class BattleShip():
             DESCRIPTION. An amount of health points.
         movement_points : TYPE int
             DESCRIPTION. Maximum amount of squares to move in one turn.
+        is_chosen : TYPE bool
+            DESCRIPTION. True if the ship was clicked, else False
+        number : TYPE int
+            DESCRIPTION. An absolute number of the ship.
+        
 
         Returns
         -------
@@ -44,11 +49,14 @@ class BattleShip():
         self.toughness = toughness
         self.movement_points = movement_points
         self.is_chosen = is_chosen
-        empty_cell = Cell("empty", color)
+        self.number = number
+        empty_cell = Cell("empty", color, number = self.number)
         left_cannon = Cell("cannon", color, self.list_of_orientations[
-            (self.dictionary_of_orientations[orientation] - 1) % 4])
+            (self.dictionary_of_orientations[orientation] - 1) % 4], 
+            number = self.number)
         right_cannon = Cell("cannon", color, self.list_of_orientations[
-            (self.dictionary_of_orientations[orientation] + 1) % 4])
+            (self.dictionary_of_orientations[orientation] + 1) % 4], 
+            number = self.number)
         self.structure = [[empty_cell,  empty_cell, empty_cell],  #Front side.
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell],
@@ -179,7 +187,7 @@ class BattleShip():
             orientation = direction
         else:
             orientation = self.orientation
-        return BattleShip(self.color, x, y, orientation)
+        return BattleShip(self.color, x, y, orientation, self.number)
         
     def is_possible_to_move(self, direction, game_field):
         '''
@@ -281,7 +289,17 @@ class BattleShip():
             else False.
 
         '''
-        pass
+        will_collide = False
+        rect = self.moved(direction).rect() # A rectangle of theoretically 
+                                                                #moved ship.
+        for i in range(rect[2]):
+            for j in range(rect[3]):
+                if ((game_field.cells[rect[0] + i][rect[1] + j].type != 
+                     "water") and (game_field.cells[rect[0] + i]
+                                   [rect[1] + j].owner != self.number)):
+                    will_collide = True
+        return will_collide                    
+                    
     
 if __name__ == "__main__":
     print("This module is not for direct call!")    

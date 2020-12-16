@@ -40,19 +40,19 @@ from battleship import BattleShip
 color_of_player = [c.GREEN, c.RED]
 color_name_of_player = ["Зелёный", "Красный"]
 battleship1 = BattleShip(color_of_player[0], x = 5, y = 20, is_chosen = True,
-                         orientation = "up")
+                         orientation = "up", number = 1)
 battleship2 = BattleShip(color_of_player[0], x = 15, y = 20, 
-                         orientation = "up")
+                         orientation = "up", number = 2)
 battleship3 = BattleShip(color_of_player[0], x = 25, y = 20,
-                         orientation = "up")
+                         orientation = "up", number = 3)
 starting_set_of_ships_for_player0 = [battleship1, battleship2, battleship3]
 
 battleship4 = BattleShip(color_of_player[1], x = 5, y = 10,
-                         orientation = "down")
+                         orientation = "down", number = 4)
 battleship5 = BattleShip(color_of_player[1], x = 15, y = 10,
-                         orientation = "down")
+                         orientation = "down", number = 5)
 battleship6 = BattleShip(color_of_player[1], x = 25, y = 10,
-                         orientation = "down")
+                         orientation = "down", number = 6)
 starting_set_of_ships_for_player1 = [battleship4, battleship5, battleship6]
 
 '''------------------------------------------------------------------------'''
