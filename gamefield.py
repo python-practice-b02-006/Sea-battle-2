@@ -3,8 +3,8 @@ class Cell():
     Stores data about certain cell.
     '''
     def __init__(self, type_, color, orientation = None, is_active=True, 
-                 is_destroyed=False, is_chosen=False, number = 0, writing = 
-                 None):
+                 is_destroyed=False, is_chosen=False, number = 0, writing = ""
+                 ):
         '''
         Initializes the cell.
 
@@ -26,7 +26,7 @@ class Cell():
             DESCRIPTION. The default is 0. The number of ship-owner of the 
             cell.
         writing : TYPE string, optional
-            DESCRIPTION. The default is None. Sth that will be written on the 
+            DESCRIPTION. The default is "". Sth that will be written on the 
             cell.
 
         Returns
