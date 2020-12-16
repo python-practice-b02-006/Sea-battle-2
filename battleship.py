@@ -51,13 +51,15 @@ class BattleShip():
         self.is_chosen = is_chosen
         self.number = number
         empty_cell = Cell("empty", color, number = self.number)
+        front_cell = Cell("empty", color, number = self.number, writing = 
+                          str(self.toughness))
         left_cannon = Cell("cannon", color, self.list_of_orientations[
             (self.dictionary_of_orientations[orientation] - 1) % 4], 
             number = self.number)
         right_cannon = Cell("cannon", color, self.list_of_orientations[
             (self.dictionary_of_orientations[orientation] + 1) % 4], 
             number = self.number)
-        self.structure = [[empty_cell,  empty_cell, empty_cell],  #Front side.
+        self.structure = [[empty_cell,  front_cell, empty_cell],  #Front side.
                           [left_cannon, empty_cell, right_cannon],
                           [empty_cell,  empty_cell, empty_cell],
                           [empty_cell,  empty_cell, empty_cell],
