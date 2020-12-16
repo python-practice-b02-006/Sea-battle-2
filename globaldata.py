@@ -17,6 +17,8 @@ class Colors():
     BLUE = (0, 0, 255)
     LIGHTBLUE = (204, 229, 255)
     GREY = (156, 161, 181)
+    BROWN = (140, 114, 89)
+    DARKBROWN = (135, 75, 15)
 
 c = Colors()
 
