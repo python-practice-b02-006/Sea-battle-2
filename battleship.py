@@ -128,10 +128,6 @@ class BattleShip():
             self.movement_points -= 1
         else:
             self.movement_points -= 2
-        #Change orientation.
-        if (self.dictionary_of_orientations[direction] - 
-            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
-            self.orientation = direction
         #Change coordinates.
         d = dict([("up", dict([("up", [0, -1]), ("down", [0, -1]), ("left", [2, -2]), ("right", [-2, -2])])),
                   ("down", dict([("up", [0, 1]), ("down", [0, 1]), ("left", [2, 2]), ("right", [-2, 2])])),
@@ -140,6 +136,10 @@ class BattleShip():
                   ])#Dictionary of coordinates changes. [delta x, delta y]
         self.x_coord += d[direction][self.orientation][0]
         self.y_coord += d[direction][self.orientation][1]
+        #Change orientation.
+        if (self.dictionary_of_orientations[direction] - 
+            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
+            self.orientation = direction
         #Change orientation of cannons.
         self.structure[1][0].orientation = self.list_of_orientations[
             (self.dictionary_of_orientations[self.orientation] - 1) % 4]
