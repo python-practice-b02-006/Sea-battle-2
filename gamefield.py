@@ -144,8 +144,10 @@ class GameField():
         None.
 
         '''
-        self.cells[(x - left_indent) // pixels_per_cell]
-        [(y - top_indent) // pixels_per_cell].is_chosen = True
+        (self.cells[int((x - left_indent) // pixels_per_cell)]
+         [int((y - top_indent) // pixels_per_cell)].is_chosen) = True
+        print((x - left_indent) // pixels_per_cell, (y - top_indent) //
+              pixels_per_cell, "chosen")
     
 if __name__ == "__main__":
     print("This module is not for direct call!")

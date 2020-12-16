@@ -119,10 +119,10 @@ class BattleShip():
         if ((x > rect[0]) and (y > rect[1]) and (x < rect[0] + rect[2]) and 
             (y < rect[1] + rect[3])):
             return True
+            print("clicked ship!")
         else:
             return False
-       
-    
+        
     def update_movement_points(self):
         '''
         Updates movement points of the ship.
@@ -158,7 +158,18 @@ class BattleShip():
 
         '''
         self.is_chosen = False
-        
+    
+    def make_chosen(self):
+        '''
+        Makes the ship chosen.
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.is_chosen = True
+    
     def move(self, direction):
         '''
         Moves the ship in the needed direction.

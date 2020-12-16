@@ -107,7 +107,9 @@ class Player():
         None.
 
         '''
-        pass
+        for i in range(len(self.ships)):
+            if self.ships[i].is_clicked(x, y):
+                self.ships[i].make_chosen()
     
     def there_is_an_appropriate_cannon(self):
         '''

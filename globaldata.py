@@ -5,8 +5,8 @@ if __name__ == "__main__":
 
 FPS = 10
 
-screen_width = 1000
-screen_hight = 800
+screen_width = 400
+screen_hight = 400
   
 '''--------------------------Game field------------------------------------'''
 
@@ -20,8 +20,8 @@ game_field_hight = 30 #The hight of game field (along y axis)
 pixels_per_cell = min(screen_width // game_field_width, screen_hight //
                 game_field_hight) # An amount of pixels in the side of one 
                                                               #cell.(int type)
-left_indent = (screen_width - game_field_width * pixels_per_cell) / 2
-top_indent = (screen_hight - game_field_hight * pixels_per_cell) / 2
+left_indent = (screen_width - game_field_width * pixels_per_cell) // 2
+top_indent = (screen_hight - game_field_hight * pixels_per_cell) // 2
 
 '''---------------------------Colors--------------------------------------'''
 
@@ -46,7 +46,7 @@ from battleship import BattleShip
 
 color_of_player = [c.GREEN, c.RED]
 color_name_of_player = ["Зелёный", "Красный"]
-battleship1 = BattleShip(color_of_player[0], x = 5, y = 20, is_chosen = True,
+battleship1 = BattleShip(color_of_player[0], x = 5, y = 20,
                          orientation = "up", number = 1)
 battleship2 = BattleShip(color_of_player[0], x = 15, y = 20, 
                          orientation = "up", number = 2)
@@ -54,7 +54,7 @@ battleship3 = BattleShip(color_of_player[0], x = 25, y = 20,
                          orientation = "up", number = 3)
 starting_set_of_ships_for_player0 = [battleship1, battleship2, battleship3]
 
-battleship4 = BattleShip(color_of_player[1], x = 5, y = 10,
+battleship4 = BattleShip(color_of_player[1], x = 1, y = 5,
                          orientation = "down", number = 4)
 battleship5 = BattleShip(color_of_player[1], x = 15, y = 10,
                          orientation = "down", number = 5)

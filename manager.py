@@ -62,9 +62,9 @@ class Manager():
                 out = open('observe.txt', 'w')
                 for i in range(30):
                     for j in range(30):
-                        print(#game_field.cells[j][i].type,
+                        print(game_field.cells[j][i].type,
                               #game_field.cells[j][i].writing,
-                              #game_field.cells[j][i].orientation,
+                              game_field.cells[j][i].orientation,
                               game_field.cells[j][i].is_chosen, end='|',
                               file = out)
                     print(end='\n', file = out)
@@ -113,8 +113,8 @@ class Manager():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP_ENTER:
                     turn_passed = True
-                    #player[active].make_ships_not_chosen()
-                    #game_field.make_cells_not_chosen()
+                    player[active].make_ships_not_chosen()
+                    game_field.make_cells_not_chosen()
                     print("Следующий ход")
                 elif event.key == pygame.K_UP:
                     player[active].move_chosen_ship("up", game_field)
