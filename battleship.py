@@ -83,6 +83,20 @@ class BattleShip():
                   ]) # Dictionary of sth that will be returned.
         return d[self.orientation]
 
+    def rect_in_real_coordinates(self):
+        '''
+        Returns real coordinates of the rectangle of the ship.
+
+        Returns
+        -------
+        list of int-s
+            DESCRIPTION. Pygame rectangle real coordinates.
+
+        '''
+        return [left_indent + self.rect()[0] * pixels_per_cell, top_indent + 
+                self.rect()[1] * pixels_per_cell, self.rect()[2] * 
+                pixels_per_cell, self.rect()[3] * pixels_per_cell]
+
     def is_clicked(self, x, y):
         '''
         Checks if the ship is clicked or not.
@@ -101,6 +115,13 @@ class BattleShip():
 
         '''
         pass
+        rect = self.rect_in_real_coordinates() 
+        if ((x > rect[0]) and (y > rect[1]) and (x < rect[0] + rect[2]) and 
+            (y < rect[1] + rect[3])):
+            return True
+        else:
+            return False
+       
     
     def update_movement_points(self):
         '''
