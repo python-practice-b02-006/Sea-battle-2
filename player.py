@@ -67,6 +67,65 @@ class Player():
                     print(self.ships[i].is_possible_to_move(direction,
                                                             game_field)[1])
                 
-        
+    def ship_is_clicked(self, x, y):
+        '''
+        Checks if any ship of the player is clicked or not.
+
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+
+        Returns
+        -------
+        bool
+            DESCRIPTION. True if any ship of the player is clicked, else 
+            False.
+
+        '''
+        pass
+    
+    def make_clicked_ship_chosen(self, x, y):
+        '''
+        Makes clicked ship chosen.
+
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass
+    
+    def there_is_an_appropriate_cannon(self):
+        '''
+        Checks if there is a cannon that can shoot at the enemy.
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass
+    
+    def shoot():
+        '''
+        Makes needed cannon shoot at the enemy.
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass
+    
 if __name__ == "__main__":
     print("This module is not for direct call!")

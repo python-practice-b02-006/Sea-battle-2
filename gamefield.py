@@ -115,5 +115,34 @@ class GameField():
                                 ships[i][j].y_coord - 1 + l
                                 ] = ships[i][j].structure[k][l]
 
+    def make_cells_not_chosen(self):
+        '''
+        Makes cells of the game field not chosen.
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass
+    
+    def make_clicked_cell_chosen(self, x, y):
+        '''
+        Make clicked cell chosen.
+
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+
+        Returns
+        -------
+        None.
+
+        '''
+        pass
+    
 if __name__ == "__main__":
     print("This module is not for direct call!")

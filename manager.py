@@ -105,29 +105,45 @@ class Manager():
 
         '''
         turn_passed, finished, exited = False, False, False
+        active = number_of_active_player
         for event in events:
             if event.type == pygame.QUIT:
                 turn_passed, exited = True, True
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP_ENTER:
                     turn_passed = True
-                    #player[number_of_active_player].make_ships_not_chosen()
+                    #player[active].make_ships_not_chosen()
+                    #game_field.make_cells_not_chosen()
                     print("Следующий ход")
                 elif event.key == pygame.K_UP:
-                    player[number_of_active_player].move_chosen_ship(
-                        "up", game_field)
+                    player[active].move_chosen_ship("up", game_field)
                 elif event.key == pygame.K_DOWN:
-                    player[number_of_active_player].move_chosen_ship(
-                        "down", game_field)
+                    player[active].move_chosen_ship("down", game_field)
                 elif event.key == pygame.K_LEFT:
-                    player[number_of_active_player].move_chosen_ship(
-                        "left", game_field)
+                    player[active].move_chosen_ship("left", game_field)
                 elif event.key == pygame.K_RIGHT:
-                    player[number_of_active_player].move_chosen_ship(
-                        "right", game_field)
+                    player[active].move_chosen_ship("right", game_field)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button < 4):
-                    pass
+                    if player[active].ship_is_clicked(event.pos[0],
+                                                      event.pos[1]):
+                        player[active].make_ships_not_chosen()
+                        game_field.make_cells_not_chosen()
+                        player[active].make_clicked_ship_chosen(event.pos[0],
+                                                                event.pos[1])
+                        game_field.make_clicked_cell_chosen(event.pos[0],
+                                                            event.pos[1])
+                    elif player[(active + 1) % 2].ship_is_clicked(
+                            event.pos[0], event.pos[1]):
+                        if player[active].there_is_an_appropriate_cannon():
+                            player[active].shoot()
+                        else:
+                            player[active].make_ships_not_chosen()
+                            game_field.make_cells_not_chosen()
+                    else:
+                        player[active].make_ships_not_chosen()
+                        game_field.make_cells_not_chosen()
+                        
         return turn_passed, finished, exited
                         
         
