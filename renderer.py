@@ -77,39 +77,63 @@ class Renderer():
         None.
 
         '''
+        cell_loc = [int(left_indent + m*pixels_per_cell), int(top_indent 
+                   + n*pixels_per_cell), pixels_per_cell, pixels_per_cell]
         if cell.type == "Water":
-            pygame.draw.rect(screen, c.BLUE, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell])
-            pygame.draw.rect(screen, c.BLACK, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell], 1)
+            rect(screen, c.BLUE, cell_loc)
+            rect(screen, c.BLACK, cell_loc, 1)
        
         elif cell.type == "empty":
-            pygame.draw.rect(screen, c.BROWN, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell])
-            pygame.draw.rect(screen, c.BLACK, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell], 1)
+            rect(screen, c.BROWN, cell_loc)
+            rect(screen, c.BLACK, cell_loc, 1)
         
         elif cell.type == "cannon":
-            pygame.draw.rect(screen, c.DARKBROWN, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell])
-            pygame.draw.rect(screen, c.BLACK, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell], 1)
+            rect(screen, c.DARKBROWN, cell_loc)
+            rect(screen, c.BLACK, cell_loc, 1)
+            circle(screen, c.BROWN, [cell_loc[0] + int(pixels_per_cell / 2),
+                   cell_loc[1] + int(pixels_per_cell / 2)], 
+                   int(pixels_per_cell / 2) - 1, 1)
 
             if cell.orientation == "up":
-                angle = 0
-                surface_loc = [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell]
+                line(screen, c.BLACK, [cell_loc[0] + pixels_per_cell / 2,
+                     cell_loc[1] + 5], [cell_loc[0] + pixels_per_cell / 2,
+                     cell_loc[1] + pixels_per_cell - 5], 2)
+                lines(screen, c.BLACK, False, [[cell_loc[0] + 11, cell_loc[1]
+                      + 8], [cell_loc[0] + pixels_per_cell / 2, cell_loc[1] 
+                      + 5], [cell_loc[0] + pixels_per_cell - 11, cell_loc[1] 
+                      + 8]], 2) 
 
             elif cell.orientation == "left":
-                angle = 90
-                surface_loc = [left_indent + m*pixels_per_cell, top_indent + (n+1)*pixels_per_cell, pixels_per_cell, pixels_per_cell]
+                line(screen, c.BLACK, [cell_loc[0] + 5, cell_loc[1] + 
+                     pixels_per_cell / 2], [cell_loc[0] + pixels_per_cell 
+                     - 5, cell_loc[1] + pixels_per_cell / 2], 2)
+                lines(screen, c.BLACK, False, [[cell_loc[0] + 8, cell_loc[1]
+                      + 11], [cell_loc[0] + 5, cell_loc[1]
+                      + pixels_per_cell / 2], [cell_loc[0] + 8, cell_loc[1]
+                      + pixels_per_cell - 11]], 2)
 
             elif cell.orientation == "down":
-                angle = 180
-                surface_loc = [left_indent + (m+1)*pixels_per_cell, top_indent + (n+1)*pixels_per_cell, pixels_per_cell, pixels_per_cell]
+                 pygame.draw.line(screen, c.BLACK, [cell_loc[0] +
+                                 pixels_per_cell / 2, cell_loc[1] + 5],
+                                 [cell_loc[0] + pixels_per_cell / 2 ,
+                                 cell_loc[1] + pixels_per_cell - 5], 2)
+                 lines(screen, c.BLACK, False, [[cell_loc[0] + 11, cell_loc[1]
+                       + pixels_per_cell - 8], [cell_loc[0] + pixels_per_cell
+                       / 2, cell_loc[1] + pixels_per_cell - 5], [cell_loc[0] 
+                       + pixels_per_cell - 11, cell_loc[1]
+                       + pixels_per_cell - 8]], 2)
+
 
             elif cell.orientation == "right":
-                angle = 270
-                surface_loc = [left_indent + (m+1)*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell]
-            '''
-            surface = pygame.Surface([pixels_per_cell, pixels_per_cell], pygame.SRCALPHA)
-            pygame.draw.line(surface, c.BLACK, [pixels_per_cell / 2, 5], [pixels_per_cell / 2 , pixels_per_cell - 5], 2)
-            surface_rot = pygame.transform.rotate(surface, angle)
-            screen.blit(surface_rot, surface_loc)
-            '''
+                pygame.draw.line(screen, c.BLACK, [cell_loc[0] + 5,
+                                 cell_loc[1] + pixels_per_cell / 2],
+                                 [cell_loc[0] + pixels_per_cell - 5,
+                                 cell_loc[1] + pixels_per_cell / 2], 2)
+                lines(screen, c.BLACK, False, [[cell_loc[0] + pixels_per_cell
+                      - 8, cell_loc[1] + 11], [cell_loc[0] + pixels_per_cell 
+                      -  5, cell_loc[1] + pixels_per_cell / 2], [cell_loc[0] 
+                      + pixels_per_cell - 8, cell_loc[1]
+                      + pixels_per_cell - 11]], 2)
 
         pygame.display.update()
 
