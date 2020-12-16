@@ -62,9 +62,10 @@ class Manager():
                 out = open('observe.txt', 'w')
                 for i in range(30):
                     for j in range(30):
-                        print(game_field.cells[j][i].type,
+                        print(#game_field.cells[j][i].type,
                               #game_field.cells[j][i].writing,
-                              game_field.cells[j][i].orientation, end='|',
+                              #game_field.cells[j][i].orientation,
+                              game_field.cells[j][i].is_chosen, end='|',
                               file = out)
                     print(end='\n', file = out)
                 #

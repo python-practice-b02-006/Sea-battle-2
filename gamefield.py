@@ -44,7 +44,7 @@ class Cell():
         self.writing = writing
 
 
-from globaldata import Colors
+from globaldata import (Colors, pixels_per_cell, left_indent, top_indent)
 c = Colors()
 
 class GameField():
@@ -144,7 +144,8 @@ class GameField():
         None.
 
         '''
-        pass
+        self.cells[(x - left_indent) // pixels_per_cell]
+        [(y - top_indent) // pixels_per_cell].is_chosen = True
     
 if __name__ == "__main__":
     print("This module is not for direct call!")

@@ -82,7 +82,7 @@ class Renderer():
     
     def draw_button(self, screen, button_name, button_location):
         '''
-        Draws starting button.
+        Draws button.
 
         Parameters
         ----------
