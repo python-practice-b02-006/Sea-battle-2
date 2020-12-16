@@ -128,10 +128,6 @@ class BattleShip():
             self.movement_points -= 1
         else:
             self.movement_points -= 2
-        #Change orientation.
-        if (self.dictionary_of_orientations[direction] - 
-            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
-            self.orientation = direction
         #Change coordinates.
         d = dict([("up", dict([("up", [0, -1]), ("down", [0, -1]), ("left", [2, -2]), ("right", [-2, -2])])),
                   ("down", dict([("up", [0, 1]), ("down", [0, 1]), ("left", [2, 2]), ("right", [-2, 2])])),
@@ -140,6 +136,10 @@ class BattleShip():
                   ])#Dictionary of coordinates changes. [delta x, delta y]
         self.x_coord += d[direction][self.orientation][0]
         self.y_coord += d[direction][self.orientation][1]
+        #Change orientation.
+        if (self.dictionary_of_orientations[direction] - 
+            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
+            self.orientation = direction
         #Change orientation of cannons.
         self.structure[1][0].orientation = self.list_of_orientations[
             (self.dictionary_of_orientations[self.orientation] - 1) % 4]
@@ -149,6 +149,37 @@ class BattleShip():
             (self.dictionary_of_orientations[self.orientation] - 1) % 4]
         self.structure[4][2].orientation = self.list_of_orientations[
             (self.dictionary_of_orientations[self.orientation] + 1) % 4]
+        
+    def moved(self, direction):
+        '''
+        Returns an object of theoretically moved ship in the needed direction.
+
+        Parameters
+        ----------
+        direction : TYPE string
+            DESCRIPTION. Where the ship should go.
+
+        Returns
+        -------
+        object of BattleShip
+            Description. An object of theoretically moved ship.
+
+        '''
+        #Coordinates.
+        d = dict([("up", dict([("up", [0, -1]), ("down", [0, -1]), ("left", [2, -2]), ("right", [-2, -2])])),
+                  ("down", dict([("up", [0, 1]), ("down", [0, 1]), ("left", [2, 2]), ("right", [-2, 2])])),
+                  ("left", dict([("up", [-2, 2]), ("down", [-2, -2]), ("left", [-1, 0]), ("right", [-1, 0])])),
+                  ("right", dict([("up", [2, 2]), ("down", [2, -2]), ("left", [1, 0]), ("right", [1, 0])]))
+                  ])#Dictionary of coordinates changes. [delta x, delta y]
+        x = self.x_coord + d[direction][self.orientation][0]
+        y = self.y_coord + d[direction][self.orientation][1]
+        #Orientation.
+        if (self.dictionary_of_orientations[direction] - 
+            self.dictionary_of_orientations[self.orientation]) % 2 != 0:
+            orientation = direction
+        else:
+            orientation = self.orientation
+        return BattleShip(self.color, x, y, orientation)
         
     def is_possible_to_move(self, direction, game_field):
         '''
@@ -223,7 +254,14 @@ class BattleShip():
             else False.
 
         '''
-        pass
+        rect = self.moved(direction).rect() # A rectangle of theoretically 
+                                                                #moved ship.
+        if ((rect[0] < 0) or (rect[1] < 0) or ((rect[0] + rect[2] - 1) >=
+                                              game_field.width) or 
+            ((rect[1] + rect[3] - 1) >= game_field.hight)):
+            return True
+        else:
+            return False
       
     def will_collide(self, direction, game_field):
         '''
