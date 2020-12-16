@@ -15,13 +15,14 @@ class Colors():
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     BLUE = (0, 0, 255)
-
+    LIGHTBLUE = (204, 229, 255)
+    GREY = (156, 161, 181)
 
 c = Colors()
 
 '''--------------------------Buttons---------------------------------------'''
 
-rect_of_starting_button = [0, 0, 100, 100] #pygame rules of rectangle
+rect_of_starting_button = [1, 1, 100, 100] #pygame rules of rectangle
 
 '''--------------------------Game field------------------------------------'''
 

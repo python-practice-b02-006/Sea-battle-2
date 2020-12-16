@@ -10,7 +10,7 @@ class Renderer():
     def __init__(self, screen):
         pygame.init()
         screen.fill(c.BLACK)
-        background_image = pygame.image.load("fon.jpg")
+        background_image = pygame.image.load("fon.jpg").convert()
         screen.blit(background_image, [0, 0])
         pygame.display.update()
     
@@ -32,7 +32,6 @@ class Renderer():
         None.
 
         '''
-        screen.fill(c.BLACK)
         for i in range(len(cells_of_game_field)):
             for j in range(len(cells_of_game_field[i])):
                 self.draw_cell(screen, cells_of_game_field[i][j], i, j)
@@ -40,7 +39,7 @@ class Renderer():
             for j in range(len(ships[i])):
                 if ships[i][j].is_chosen:
                     self.highlight_chosen_ship(screen, ships[i][j])
-                    
+                   
     def highlight_chosen_ship(self, screen, ship):
         '''
         Draws a rectangle around the ship.
@@ -95,9 +94,19 @@ class Renderer():
         None.
 
         '''
-        screen.fill(c.BLACK)
-        pass
-    
+        font_size = 35
+        font = pygame.font.SysFont("dejavusansmono", font_size)
+        font_loc = [button_location[2]/10, button_location[3]/2 - font_size/3]
+        font_color = c.BLACK
+        pygame.draw.rect(screen, c.GREY, button_location)
+        pygame.draw.rect(screen, c.LIGHTBLUE, [button_location[0] + 5, button_location[1] + 5, button_location[2] - 10, button_location[3] - 10], 1)
+        screen.blit(font.render(button_name, True, font_color), font_loc)
+        pygame.display.update()
+        '''
+        if :
+            screen.blit(font.render(button_name, True, c.RED), font_loc)
+        '''
+
     def finish_the_game(self, screen, color, color_name):
         '''
         Displays caption:"/color_name/ игрок побеждает!"
