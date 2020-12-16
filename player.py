@@ -111,16 +111,29 @@ class Player():
             if self.ships[i].is_clicked(x, y):
                 self.ships[i].make_chosen()
     
-    def there_is_an_appropriate_cannon(self):
+    def there_is_an_appropriate_cannon(self, x, y):
         '''
         Checks if there is a cannon that can shoot at the enemy.
-
+        
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+        
         Returns
         -------
-        None.
+        bool
+            DESCRIPTION. True if there is a cannon that can shoot at the 
+            enemy, else False.
 
         '''
-        pass
+        there_is = False
+        for i in range(len(self.ships)):
+            if self.ships[i].has_an_appropriate_cannon(x, y):
+                there_is = True
+        return there_is
     
     def shoot():
         '''

@@ -54,7 +54,7 @@ battleship3 = BattleShip(color_of_player[0], x = 25, y = 20,
                          orientation = "up", number = 3)
 starting_set_of_ships_for_player0 = [battleship1, battleship2, battleship3]
 
-battleship4 = BattleShip(color_of_player[1], x = 1, y = 5,
+battleship4 = BattleShip(color_of_player[1], x = 5, y = 10,
                          orientation = "down", number = 4)
 battleship5 = BattleShip(color_of_player[1], x = 15, y = 10,
                          orientation = "down", number = 5)

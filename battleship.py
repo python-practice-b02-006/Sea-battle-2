@@ -353,6 +353,26 @@ class BattleShip():
                     will_collide = True
         return will_collide                    
                     
+    def has_an_appropriate_cannon(self, x, y):
+        '''
+        Checks if the ship has a cannon that can shoot at the enemy.
+        
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+        
+        Returns
+        -------
+        bool
+            DESCRIPTION. True if the ship has a cannon that can shoot at the 
+            enemy, else False.
+
+        '''
+        pass
+    
     
 if __name__ == "__main__":
     print("This module is not for direct call!")    

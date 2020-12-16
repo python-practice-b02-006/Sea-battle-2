@@ -136,7 +136,8 @@ class Manager():
                                                             event.pos[1])
                     elif player[(active + 1) % 2].ship_is_clicked(
                             event.pos[0], event.pos[1]):
-                        if player[active].there_is_an_appropriate_cannon():
+                        if player[active].there_is_an_appropriate_cannon(
+                                event.pos[0], event.pos[1]):
                             player[active].shoot()
                         else:
                             player[active].make_ships_not_chosen()
