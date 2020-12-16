@@ -124,7 +124,9 @@ class GameField():
         None.
 
         '''
-        pass
+        for i in range(self.width):
+            for j in range(self.hight):
+                self.cells[i][j].is_chosen = False
     
     def make_clicked_cell_chosen(self, x, y):
         '''

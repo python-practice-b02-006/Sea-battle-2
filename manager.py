@@ -63,7 +63,7 @@ class Manager():
                 for i in range(30):
                     for j in range(30):
                         print(game_field.cells[j][i].type,
-                              game_field.cells[j][i].writing,
+                              #game_field.cells[j][i].writing,
                               game_field.cells[j][i].orientation, end='|',
                               file = out)
                     print(end='\n', file = out)
