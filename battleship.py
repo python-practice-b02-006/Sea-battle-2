@@ -1,5 +1,5 @@
 from gamefield import Cell
-from globaldata import pixels_per_cell
+from globaldata import (pixels_per_cell, left_indent, left_indent)
 
 class BattleShip():
     '''

@@ -1,11 +1,28 @@
 if __name__ == "__main__":
     print("This module is not for direct call!")
+
 '''---------------------------Global---------------------------------------'''
+
 FPS = 10
 
 screen_width = 1000
 screen_hight = 800
   
+'''--------------------------Game field------------------------------------'''
+
+game_field_width = 30 #The width of game field (along x axis) 
+                        #(an amount of cells)
+game_field_hight = 30 #The hight of game field (along y axis) 
+                        #(an amount of cells)
+
+'''------------------Transition-between-coordinates------------------------'''
+
+pixels_per_cell = min(screen_width // game_field_width, screen_hight //
+                game_field_hight) # An amount of pixels in the side of one 
+                                                              #cell.(int type)
+left_indent = (screen_width - game_field_width * pixels_per_cell) / 2
+top_indent = (screen_hight - game_field_hight * pixels_per_cell) / 2
+
 '''---------------------------Colors--------------------------------------'''
 
 class Colors():
@@ -22,16 +39,6 @@ c = Colors()
 '''--------------------------Buttons---------------------------------------'''
 
 rect_of_starting_button = [0, 0, 100, 100] #pygame rules of rectangle
-
-'''--------------------------Game field------------------------------------'''
-
-game_field_width = 30 #The width of game field (along x axis) 
-                        #(an amount of cells)
-game_field_hight = 30 #The hight of game field (along y axis) 
-                        #(an amount of cells)
-pixels_per_cell = min(screen_width // game_field_width, screen_hight //
-                game_field_hight) # An amount of pixels in the side of one 
-                                                              #cell.(int type)
 
 '''-------------------------Starting-set-----------------------------------'''
 

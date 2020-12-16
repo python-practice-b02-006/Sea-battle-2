@@ -1,6 +1,6 @@
 import pygame
 from pygame.draw import *
-from globaldata import (Colors, pixels_per_cell)  
+from globaldata import (Colors, pixels_per_cell, left_indent, top_indent)  
 c = Colors()
 
 class Renderer():
