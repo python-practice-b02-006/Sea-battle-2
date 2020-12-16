@@ -83,6 +83,25 @@ class BattleShip():
                   ]) # Dictionary of sth that will be returned.
         return d[self.orientation]
 
+    def is_clicked(self, x, y):
+        '''
+        Checks if the ship is clicked or not.
+
+        Parameters
+        ----------
+        x : TYPE int 
+            DESCRIPTION. x mouse coordinate
+        y : TYPE int
+            DESCRIPTION. y mouse coordinate
+
+        Returns
+        -------
+        bool
+            DESCRIPTION. True if the ship is clicked, else False.
+
+        '''
+        pass
+    
     def update_movement_points(self):
         '''
         Updates movement points of the ship.

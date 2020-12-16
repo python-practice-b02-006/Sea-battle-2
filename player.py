@@ -85,7 +85,11 @@ class Player():
             False.
 
         '''
-        pass
+        clicked = False
+        for i in range(len(self.ships)):
+            if self.ships[i].is_clicked(x, y):
+                clicked = True
+        return clicked
     
     def make_clicked_ship_chosen(self, x, y):
         '''
