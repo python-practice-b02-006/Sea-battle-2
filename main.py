@@ -10,7 +10,7 @@ def main():
     mgr = Manager(screen)
     mgr.process(screen)
     pygame.quit()
-    print("OK")
+    print("Игра окончена")
 
 
 if __name__ == "__main__":

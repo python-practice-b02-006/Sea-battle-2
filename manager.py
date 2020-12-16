@@ -53,7 +53,7 @@ class Manager():
             while not turn_passed:
                 clock.tick(FPS)
                 turn_passed, finished, exited = self.handle_events(game_field,
-                    player[number_of_active_player], pygame.event.get())
+                    player, number_of_active_player, pygame.event.get())
                 game_field.update([player[0].ships, player[1].ships])
                 self.renderer.draw_game_field(screen, game_field.cells, 
                                       [player[0].ships, player[1].ships])
@@ -78,7 +78,8 @@ class Manager():
                         if event.type == pygame.QUIT:
                             exited = True
                 
-    def handle_events(self, game_field, player, events):
+    def handle_events(self, game_field, player, number_of_active_player,
+                      events):
         '''
         Handles events
 
@@ -86,8 +87,10 @@ class Manager():
         ----------
         game_field : TYPE object of GameField
             DESCRIPTION. Contains all data about cells of game field.
-        player : TYPE object of Player
-            DESCRIPTION. Contains info about ships of the player.
+        player : TYPE list of objects of Player
+            DESCRIPTION. Contains info about players.
+        number_of_active_player : TYPE int
+            DESCRIPTION. The number of active player(it's his turn now.)
         events : TYPE pygame event
             DESCRIPTION. Events got from pygame.event.get()
         Returns
@@ -107,16 +110,20 @@ class Manager():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP_ENTER:
                     turn_passed = True
-                    #player.make_ships_not_chosen()
+                    #player[number_of_active_player].make_ships_not_chosen()
                     print("Следующий ход")
                 elif event.key == pygame.K_UP:
-                    player.move_chosen_ship("up", game_field)
+                    player[number_of_active_player].move_chosen_ship(
+                        "up", game_field)
                 elif event.key == pygame.K_DOWN:
-                    player.move_chosen_ship("down", game_field)
+                    player[number_of_active_player].move_chosen_ship(
+                        "down", game_field)
                 elif event.key == pygame.K_LEFT:
-                    player.move_chosen_ship("left", game_field)
+                    player[number_of_active_player].move_chosen_ship(
+                        "left", game_field)
                 elif event.key == pygame.K_RIGHT:
-                    player.move_chosen_ship("right", game_field)
+                    player[number_of_active_player].move_chosen_ship(
+                        "right", game_field)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button < 4):
                     pass
