@@ -34,6 +34,8 @@ pixels_per_cell = min(screen_width // game_field_width, screen_hight //
                 game_field_hight) # An amount of pixels in the side of one 
                                                               #cell.(int type)
 
+left_indent = (screen_width - game_field_width * pixels_per_cell) / 2  
+top_indent = (screen_hight - game_field_hight * pixels_per_cell) / 2 
 '''-------------------------Starting-set-----------------------------------'''
 
 from battleship import BattleShip

@@ -1,6 +1,6 @@
 import pygame
 from pygame.draw import *
-from globaldata import (Colors, pixels_per_cell)  
+from globaldata import (Colors, pixels_per_cell, left_indent, top_indent)  
 c = Colors()
 
 class Renderer():
@@ -77,8 +77,11 @@ class Renderer():
         None.
 
         '''
-        pass 
-    
+        if cell.type == "Water":
+            pygame.draw.rect(screen, c.BLUE, [left_indent + m*pixels_per_cell, top_indent + n*pixels_per_cell, pixels_per_cell, pixels_per_cell])
+        pygame.display.update()
+
+
     def draw_button(self, screen, button_name, button_location):
         '''
         Draws starting button.
@@ -99,13 +102,10 @@ class Renderer():
         font_loc = [button_location[2]/10, button_location[3]/2 - font_size/3]
         font_color = c.BLACK
         pygame.draw.rect(screen, c.GREY, button_location)
-        pygame.draw.rect(screen, c.LIGHTBLUE, [button_location[0] + 5, button_location[1] + 5, button_location[2] - 10, button_location[3] - 10], 1)
+        pygame.draw.rect(screen, c.LIGHTBLUE, [button_location[0] + 3, button_location[1] + 3, button_location[2] - 6, button_location[3] - 6], 2)
         screen.blit(font.render(button_name, True, font_color), font_loc)
         pygame.display.update()
-        '''
-        if :
-            screen.blit(font.render(button_name, True, c.RED), font_loc)
-        '''
+
 
     def finish_the_game(self, screen, color, color_name):
         '''
