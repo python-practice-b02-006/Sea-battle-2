@@ -112,7 +112,7 @@ class Renderer():
 
         cell_loc = [int(left_indent + m*pixels_per_cell), int(top_indent 
                    + n*pixels_per_cell), pixels_per_cell, pixels_per_cell]
-        if cell.type == "Water":
+        if cell.type == "water":
             rect(screen, c.BLUE, cell_loc)
             rect(screen, c.BLACK, cell_loc, 1)
        
