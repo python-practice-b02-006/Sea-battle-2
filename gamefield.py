@@ -171,7 +171,14 @@ class GameField():
             False.
 
         '''
-        pass
+        #Game field coordinates of the aim:
+        x1 = int((x - left_indent) // pixels_per_cell)
+        y1 = int((y - top_indent) // pixels_per_cell)
+        if abs(x1 - m) + abs(y1 - n) <= 6:
+            return True
+        else:
+            return False
+        
         
     
 if __name__ == "__main__":
