@@ -31,7 +31,7 @@ class Menu():
         '''
         self.renderer.draw_button(screen, self.starting_button.name, 
                                   self.starting_button.location)
-        
+
     def load(self, screen):
         '''
         Suggests choosing settings if there are any. Then lets players start

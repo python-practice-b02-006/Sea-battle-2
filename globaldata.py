@@ -5,8 +5,8 @@ if __name__ == "__main__":
 
 FPS = 10
 
-screen_width = 400
-screen_hight = 400
+screen_width = 1200
+screen_hight = 800
   
 '''--------------------------Game field------------------------------------'''
 
@@ -32,13 +32,17 @@ class Colors():
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     BLUE = (0, 0, 255)
-
+    LIGHTBLUE = (204, 229, 255)
+    GREY = (156, 161, 181)
+    BROWN = (140, 114, 89)
+    DARKBROWN = (135, 75, 15)
 
 c = Colors()
 
 '''--------------------------Buttons---------------------------------------'''
 
-rect_of_starting_button = [0, 0, 100, 100] #pygame rules of rectangle
+rect_of_starting_button = [1, 1, 100, 100] #pygame rules of rectangle
+
 
 '''-------------------------Starting-set-----------------------------------'''
 
