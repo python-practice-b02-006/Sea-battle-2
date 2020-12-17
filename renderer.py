@@ -32,7 +32,7 @@ class Renderer():
         None.
 
         '''
-        
+        screen.fill(c.BLACK)
         for i in range(len(cells_of_game_field)):
             for j in range(len(cells_of_game_field[i])):
                 self.draw_cell(screen, cells_of_game_field[i][j], i, j)

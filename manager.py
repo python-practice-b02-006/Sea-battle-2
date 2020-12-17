@@ -53,10 +53,8 @@ class Manager():
             while not turn_passed:
                 clock.tick(FPS)
                 turn_passed, finished, exited = self.handle_events(game_field,
-                    player, number_of_active_player, pygame.event.get())
-                game_field.update([player[0].ships, player[1].ships])
-                self.renderer.draw_game_field(screen, game_field.cells, 
-                                      [player[0].ships, player[1].ships])
+                    player, number_of_active_player, pygame.event.get(), screen)
+                
                 #
                 out = open('observe.txt', 'a')
                 out = open('observe.txt', 'w')
@@ -81,7 +79,7 @@ class Manager():
                             exited = True
                 
     def handle_events(self, game_field, player, number_of_active_player,
-                      events):
+                      events, screen):
         '''
         Handles events
 
@@ -116,14 +114,29 @@ class Manager():
                     player[active].make_ships_not_chosen()
                     game_field.make_cells_not_chosen()
                     print("Следующий ход")
+                    game_field.update([player[0].ships, player[1].ships])
+                    self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
                 elif event.key == pygame.K_UP:
                     player[active].move_chosen_ship("up", game_field)
+                    game_field.update([player[0].ships, player[1].ships])
+                    self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
                 elif event.key == pygame.K_DOWN:
                     player[active].move_chosen_ship("down", game_field)
+                    game_field.update([player[0].ships, player[1].ships])
+                    self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
                 elif event.key == pygame.K_LEFT:
                     player[active].move_chosen_ship("left", game_field)
+                    game_field.update([player[0].ships, player[1].ships])
+                    self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
                 elif event.key == pygame.K_RIGHT:
                     player[active].move_chosen_ship("right", game_field)
+                    game_field.update([player[0].ships, player[1].ships])
+                    self.renderer.draw_game_field(screen, game_field.cells, 
+                                      [player[0].ships, player[1].ships])
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if (event.button < 4):
                     if player[active].ship_is_clicked(event.pos[0],
@@ -134,17 +147,29 @@ class Manager():
                                                                 event.pos[1])
                         game_field.make_clicked_cell_chosen(event.pos[0],
                                                             event.pos[1])
+                        game_field.update([player[0].ships, player[1].ships])
+                        self.renderer.draw_game_field(screen, game_field.cells, 
+                                                 [player[0].ships, player[1].ships])
                     elif player[(active + 1) % 2].ship_is_clicked(
                             event.pos[0], event.pos[1]):
                         if player[active].there_is_an_appropriate_cannon(
                                 event.pos[0], event.pos[1], game_field):
                             player[active].shoot()
+                            game_field.update([player[0].ships, player[1].ships])
+                            self.renderer.draw_game_field(screen, game_field.cells, 
+                                                 [player[0].ships, player[1].ships])
                         else:
                             player[active].make_ships_not_chosen()
                             game_field.make_cells_not_chosen()
+                            game_field.update([player[0].ships, player[1].ships])
+                            self.renderer.draw_game_field(screen, game_field.cells, 
+                                                 [player[0].ships, player[1].ships])
                     else:
                         player[active].make_ships_not_chosen()
                         game_field.make_cells_not_chosen()
+                        game_field.update([player[0].ships, player[1].ships])
+                        self.renderer.draw_game_field(screen, game_field.cells, 
+                                                 [player[0].ships, player[1].ships])
                         
         return turn_passed, finished, exited
                         
