@@ -149,5 +149,30 @@ class GameField():
         print((x - left_indent) // pixels_per_cell, (y - top_indent) //
               pixels_per_cell, "chosen")
     
+    def aim_is_close_enough(m, n, x, y):
+        '''
+        Checks if aim is close enough to the cannon.
+
+        Parameters
+        ----------
+        m : TYPE int
+            DESCRIPTION. x coordinate of the cannon in game field coordinates.
+        n : TYPE int  
+            DESCRIPTION. y coordinate of the cannon in game field coordinates.
+        x : TYPE int
+            DESCRIPTION. x coordinate of the aim in real coordinates.
+        y : TYPE int
+            DESCRIPTION. y coordinate of the aim in real coordinates.
+
+        Returns
+        -------
+        bool
+            DESCRIPTION. True if aim is close enough to the cannon, else
+            False.
+
+        '''
+        pass
+        
+    
 if __name__ == "__main__":
     print("This module is not for direct call!")

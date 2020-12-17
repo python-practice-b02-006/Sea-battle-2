@@ -111,7 +111,7 @@ class Player():
             if self.ships[i].is_clicked(x, y):
                 self.ships[i].make_chosen()
     
-    def there_is_an_appropriate_cannon(self, x, y):
+    def there_is_an_appropriate_cannon(self, x, y, game_field):
         '''
         Checks if there is a cannon that can shoot at the enemy.
         
@@ -121,6 +121,8 @@ class Player():
             DESCRIPTION. x mouse coordinate
         y : TYPE int
             DESCRIPTION. y mouse coordinate
+        game_field : TYPE object of GameField
+            DESCRIPTION. Contains all data about cells of game field.
         
         Returns
         -------
@@ -131,7 +133,7 @@ class Player():
         '''
         there_is = False
         for i in range(len(self.ships)):
-            if self.ships[i].has_an_appropriate_cannon(x, y):
+            if self.ships[i].has_an_appropriate_cannon(x, y, game_field):
                 there_is = True
         return there_is
     

@@ -119,7 +119,6 @@ class BattleShip():
         if ((x > rect[0]) and (y > rect[1]) and (x < rect[0] + rect[2]) and 
             (y < rect[1] + rect[3])):
             return True
-            print("clicked ship!")
         else:
             return False
         
@@ -353,7 +352,7 @@ class BattleShip():
                     will_collide = True
         return will_collide                    
                     
-    def has_an_appropriate_cannon(self, x, y):
+    def has_an_appropriate_cannon(self, x, y, game_field):
         '''
         Checks if the ship has a cannon that can shoot at the enemy.
         
@@ -363,6 +362,8 @@ class BattleShip():
             DESCRIPTION. x mouse coordinate
         y : TYPE int
             DESCRIPTION. y mouse coordinate
+        game_field : TYPE object of GameField
+            DESCRIPTION. Contains all data about cells of game field.
         
         Returns
         -------
@@ -371,7 +372,25 @@ class BattleShip():
             enemy, else False.
 
         '''
-        pass
+        rect = self.rect()
+        for i in range(rect[2]):
+            for j in range(rect[3]):
+                if (game_field.cells[i][j].type == "cannon" and 
+                    game_field.cells[i][j].is_active and 
+                    not game_field.cells[i][j].is_destroyed and 
+                    game_field.cells[i][j].is_chosen and 
+                    game_field.aim_is_close_enough(i, j, x, y)):
+                    return True
+                elif (game_field.cells[i][j].type == "cannon" and 
+                    game_field.cells[i][j].is_active and 
+                    not game_field.cells[i][j].is_destroyed and 
+                    game_field.cells[i][j].is_chosen and 
+                    not game_field.aim_is_close_enough(i, j, x, y)):
+                    print("Слишком далеко!")
+                    return False
+                else:
+                    return False
+                    
     
     
 if __name__ == "__main__":
