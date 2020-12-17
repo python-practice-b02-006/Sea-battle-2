@@ -32,9 +32,16 @@ class Renderer():
         None.
 
         '''
+        
         for i in range(len(cells_of_game_field)):
             for j in range(len(cells_of_game_field[i])):
                 self.draw_cell(screen, cells_of_game_field[i][j], i, j)
+    
+            for i in range(len(ships)):
+                for j in range(len(ships[i])):
+                    if not ships[i][j].is_chosen:
+                        self.color_ship_for_player(screen, ships[i][j])
+        
         for i in range(len(ships)):
             for j in range(len(ships[i])):
                 if ships[i][j].is_chosen:
@@ -42,7 +49,7 @@ class Renderer():
                    
     def highlight_chosen_ship(self, screen, ship):
         '''
-        Draws a rectangle around the ship.
+        Draws a white rectangle around the ship.
 
         Parameters
         ----------
@@ -56,9 +63,34 @@ class Renderer():
         None.
 
         '''
-        pass # Use method ship.rect() - data about needed rectangle.
-        
-    def draw_cell(self, screen, cell, m, n):
+        info_ship = ship.rect()
+        rect(screen, c.WHITE, [info_ship[0] * pixels_per_cell + left_indent,
+             info_ship[1] * pixels_per_cell + top_indent, info_ship[2] * 
+             pixels_per_cell, info_ship[3] * pixels_per_cell], 3)
+
+    def color_ship_for_player(self, screen, ship):
+        '''
+        Draws a green/red rectangle around the ship.
+
+        Parameters
+        ----------
+        ship : TYPE object
+            DESCRIPTION. object of BattleShip
+        screen : TYPE Pygame screen.
+            DESCRIPTION. Where everything is drawn.
+
+        Returns
+        -------
+        None.
+
+        '''
+        info_ship = ship.rect()
+        rect(screen, ship.color, [info_ship[0] * pixels_per_cell + left_indent,
+             info_ship[1] * pixels_per_cell + top_indent, info_ship[2] *
+             pixels_per_cell, info_ship[3] * pixels_per_cell], 1)
+        pygame.display.update()
+
+    def draw_cell(self, screen, cell, m, n, color=c.BLACK):
         '''
         Draws a certain cell.
 
@@ -77,6 +109,7 @@ class Renderer():
         None.
 
         '''
+
         cell_loc = [int(left_indent + m*pixels_per_cell), int(top_indent 
                    + n*pixels_per_cell), pixels_per_cell, pixels_per_cell]
         if cell.type == "Water":
@@ -85,11 +118,11 @@ class Renderer():
        
         elif cell.type == "empty":
             rect(screen, c.BROWN, cell_loc)
-            rect(screen, c.BLACK, cell_loc, 1)
+            rect(screen, color, cell_loc, 1)
         
         elif cell.type == "cannon":
             rect(screen, c.DARKBROWN, cell_loc)
-            rect(screen, c.BLACK, cell_loc, 1)
+            rect(screen, color, cell_loc, 1)
             circle(screen, c.BROWN, [cell_loc[0] + int(pixels_per_cell / 2),
                    cell_loc[1] + int(pixels_per_cell / 2)], 
                    int(pixels_per_cell / 2) - 1, 1)
